@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:note_app/textformfield_custom.dart';
+import 'package:note_app/core/app_text_form_field.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -33,21 +33,21 @@ class _SignUpState extends State<SignUp> {
                     child: Form(
                         child: Column(
                       children: [
-                        const CustomTextFormField(
+                        const AppTextFormField(
                           label: 'UserName',
                           textInputType: TextInputType.name,
                           prefixIcon: Icons.person,
                           obscureText: false,
                         ),
                         const SizedBox(height: 25),
-                        const CustomTextFormField(
+                        const AppTextFormField(
                           label: 'Email',
                           textInputType: TextInputType.emailAddress,
                           prefixIcon: Icons.email,
                           obscureText: false,
                         ),
                         const SizedBox(height: 25),
-                        const CustomTextFormField(
+                        const AppTextFormField(
                           label: 'Password',
                           textInputType: TextInputType.visiblePassword,
                           prefixIcon: Icons.password,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:note_app/Edit/add_note_body.dart';
-import 'package:note_app/Edit/add_note_header.dart';
+import 'package:note_app/views/add_notes.dart/widgets/add_note_body.dart';
+import 'package:note_app/views/add_notes.dart/widgets/add_note_header.dart';
 
 class AddNotes extends StatefulWidget {
   const AddNotes({super.key});
@@ -17,9 +17,9 @@ class _AddNotesState extends State<AddNotes> {
         body: Container(
           color: Theme.of(context).primaryColor,
           height: MediaQuery.of(context).size.height,
-          child: SingleChildScrollView(
+          child: const SingleChildScrollView(
             child: Column(
-              children: const [
+              children: [
                 AddNoteHeader(),
                 AddNoteBody(),
               ],

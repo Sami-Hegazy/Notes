@@ -1,7 +1,5 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:note_app/home/home_header.dart';
-import 'note_content.dart';
+import 'widgets/home_body.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -77,47 +75,13 @@ class _HomePageState extends State<HomePage> {
           },
           backgroundColor: const Color(0xff252525),
           shape: RoundedRectangleBorder(
-            side: const BorderSide(color: Colors.white, width: 2),
+            side: const BorderSide(color: Color(0xFF53EEDD), width: 2),
             borderRadius: BorderRadius.circular(100),
           ),
           child: const Icon(Icons.add),
         ),
-        body: Container(
-          color: const Color(0xff252525),
-          child: Column(
-            children: [
-              const HomeHeader(),
-              Expanded(
-                child: ListView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    itemCount: notes.length,
-                    itemBuilder: ((context, index) {
-                      return Dismissible(
-                        background: Card(
-                          color: Theme.of(context).disabledColor,
-                          child: const Icon(Icons.delete, color: Colors.white),
-                        ),
-                        key: Key('$index'),
-                        child: NotesContent(
-                          notes: notes[index],
-                          cardColor: color[randomNum()],
-                        ),
-                      );
-                    })),
-              ),
-            ],
-          ),
-        ),
+        body: HomeBody(notes: notes, color: color),
       ),
     );
   }
-}
-
-int randomNum() {
-  Random rnd;
-  int min = 0;
-  int max = 5;
-  rnd = Random();
-  int r = min + rnd.nextInt(max - min);
-  return r;
 }
