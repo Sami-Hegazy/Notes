@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:note_app/core/constants.dart';
+import 'package:note_app/cubits/notes/notes_cubit.dart';
 import 'package:note_app/models/note_model.dart';
 import 'package:note_app/views/edit_notes/edit_note.dart';
 import 'package:note_app/views/home/home_page.dart';
@@ -24,19 +26,24 @@ class NotesApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Note App',
-          initialRoute: '/',
-          theme: ThemeData(
-            //brightness: Brightness.dark,
-            primaryColor: const Color(0xff252525),
-            cardColor: const Color(0xffFD99FF),
-            focusColor: const Color(0xffFF9E9E),
-            primaryColorDark: const Color(0xff252525),
-            disabledColor: const Color(0xffFF0000),
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (context) => AddNotesCubit()),
+          ],
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Note App',
+            initialRoute: '/',
+            theme: ThemeData(
+              //brightness: Brightness.dark,
+              primaryColor: const Color(0xff252525),
+              cardColor: const Color(0xffFD99FF),
+              focusColor: const Color(0xffFF9E9E),
+              primaryColorDark: const Color(0xff252525),
+              disabledColor: const Color(0xffFF0000),
+            ),
+            routes: _getRoutes(),
           ),
-          routes: _getRoutes(),
         );
       },
     );
