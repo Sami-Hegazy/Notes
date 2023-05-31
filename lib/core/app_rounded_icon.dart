@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:note_app/core/constants.dart';
 
 class AppRoundedIcon extends StatelessWidget {
   const AppRoundedIcon({
@@ -19,7 +20,7 @@ class AppRoundedIcon extends StatelessWidget {
       child: IconButton(
         onPressed: onTap,
         icon: Icon(icon),
-        color: Colors.white,
+        color: kSecondaryColor,
       ),
     );
   }
