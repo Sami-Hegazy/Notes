@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:note_app/views/home/widgets/add_note_bottom_sheet_body.dart';
+import 'package:note_app/views/add_notes/add_note_bottom_sheet_body.dart';
 import '../../core/constants.dart';
 import 'widgets/home_body.dart';
 
@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
                   side: const BorderSide(color: kSecondaryColor)),
               context: context,
               builder: (context) {
-                return const AddNoteButtomSheetBody();
+                return const AddNoteButtomSheet();
               },
             );
             //Navigator.of(context).pushNamed('addNote');
