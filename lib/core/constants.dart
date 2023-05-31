@@ -4,6 +4,8 @@ const kPrimaryColor = Color(0xff252525);
 const kSecondaryColor = Color(0xFF55EAD9);
 const kGreyColor = Color(0xff9A9A9A);
 
+const kNotesHiveBox = 'notes';
+
 var colorList = const [
   Color(0xffFD99FF),
   Color(0xffFF9E9E),
