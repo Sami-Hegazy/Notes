@@ -19,10 +19,11 @@ class _HomePageState extends State<HomePage> {
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             showModalBottomSheet(
+              isScrollControlled: true,
               backgroundColor: kPrimaryColor,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
+                  borderRadius: BorderRadius.circular(24),
+                  side: const BorderSide(color: kSecondaryColor)),
               context: context,
               builder: (context) {
                 return const AddNoteButtomSheetBody();

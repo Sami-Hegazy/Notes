@@ -47,7 +47,11 @@ class _HomeNotesContentState extends State<HomeNotesContent> {
                   ),
                 ),
               ),
-              trailing: const Icon(Icons.edit),
+              trailing: GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushNamed('editNote');
+                  },
+                  child: const Icon(Icons.edit)),
             ),
             Padding(
               padding: EdgeInsets.only(right: 20.w, bottom: 8.w, top: 18),

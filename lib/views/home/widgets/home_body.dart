@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'home_header.dart';
+import '../../../core/custom_app_bar.dart';
 import 'home_note_content.dart';
 
 class HomeBody extends StatelessWidget {
@@ -20,7 +20,7 @@ class HomeBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const HomeHeader(),
+        const CustomAppBar(),
         Expanded(
           child: ListView.builder(
               physics: const BouncingScrollPhysics(),

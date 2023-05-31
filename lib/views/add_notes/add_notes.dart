@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:note_app/views/add_notes.dart/widgets/add_note_body.dart';
-import 'package:note_app/views/add_notes.dart/widgets/add_note_header.dart';
+import 'package:note_app/views/add_notes/widgets/add_note_body.dart';
+import 'package:note_app/views/add_notes/widgets/add_note_header.dart';
 
 class AddNotes extends StatefulWidget {
   const AddNotes({super.key});
