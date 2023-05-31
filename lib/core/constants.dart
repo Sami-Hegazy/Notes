@@ -8,6 +8,9 @@ const kGreyColor = Color(0xff9A9A9A);
 
 const kNotesHiveBox = 'notes';
 
+const kDoneImage = 'assets/images/tick.png';
+const kErrorImage = 'assets/images/error.png';
+
 var colorList = const [
   Color(0xffFD99FF),
   Color(0xffFF9E9E),

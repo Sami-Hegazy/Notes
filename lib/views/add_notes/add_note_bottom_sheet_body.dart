@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note_app/core/constants.dart';
 import 'package:note_app/cubits/notes/notes_cubit.dart';
+import 'package:note_app/views/add_notes/widgets/add_alert_dialog.dart';
 import 'package:note_app/views/add_notes/widgets/add_notes_form.dart';
 
 class AddNoteButtomSheet extends StatelessWidget {
@@ -14,9 +16,13 @@ class AddNoteButtomSheet extends StatelessWidget {
       create: (context) => AddNotesCubit(),
       child: BlocConsumer<AddNotesCubit, AddNotesState>(
         listener: (context, state) {
-          if (state is AddNotesFailure) {}
+          if (state is AddNotesFailure) {
+            Navigator.pop(context);
+            showAlertDialog(context, image: kErrorImage);
+          }
           if (state is AddNotesSuccess) {
             Navigator.pop(context);
+            showAlertDialog(context, image: kDoneImage);
           }
         },
         builder: (context, state) {
@@ -24,8 +30,12 @@ class AddNoteButtomSheet extends StatelessWidget {
           return AbsorbPointer(
             absorbing: state is AddNotesLoading ? true : false,
             child: Padding(
-              padding: const EdgeInsets.only(
-                  right: 16, left: 16, top: 36, bottom: 22),
+              padding: EdgeInsets.only(
+                right: 16,
+                left: 16,
+                top: 36,
+                bottom: MediaQuery.of(context).viewInsets.bottom,
+              ),
               child: SingleChildScrollView(
                   physics: const BouncingScrollPhysics(),
                   child: AddNoteForm(width: width)),

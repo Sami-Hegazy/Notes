@@ -27,78 +27,82 @@ class _AddNoteFormState extends State<AddNoteForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: formKey,
-      autovalidateMode: autovalidateMode,
-      child: Column(
-        children: [
-          Text(
-            'Add Note',
-            style: TextStyle(
-              color: kSecondaryColor,
-              fontSize: 24.sp,
-              fontWeight: FontWeight.bold,
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 22),
+      child: Form(
+        key: formKey,
+        autovalidateMode: autovalidateMode,
+        child: Column(
+          children: [
+            Text(
+              'Add Note',
+              style: TextStyle(
+                color: kSecondaryColor,
+                fontSize: 24.sp,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          36.verticalSpace,
-          AppTextFormField(
-            onSaved: (value) {
-              title = value;
-            },
-            validator: (value) {
-              if (value?.isEmpty ?? true) {
-                return 'Field is required';
-              } else {
-                return null;
-              }
-            },
-            labelText: 'Title',
-            maxLength: 30,
-          ),
-          22.verticalSpace,
-          AppTextFormField(
-            onSaved: (value) {
-              note = value;
-            },
-            validator: (value) {
-              if (value?.isEmpty ?? true) {
-                return 'Field is required';
-              } else {
-                return null;
-              }
-            },
-            labelText: 'Type Something....',
-            maxLength: 200,
-            maxLines: 6,
-          ),
-          22.verticalSpace,
-          BlocBuilder<AddNotesCubit, AddNotesState>(
-            builder: (context, state) {
-              return AppElevatedButton(
-                isLoading: state is AddNotesLoading ? true : false,
-                onTap: () {
-                  if (formKey.currentState!.validate()) {
-                    formKey.currentState!.save();
+            36.verticalSpace,
+            AppTextFormField(
+              onSaved: (value) {
+                title = value;
+              },
+              validator: (value) {
+                if (value?.isEmpty ?? true) {
+                  return 'Field is required';
+                } else {
+                  return null;
+                }
+              },
+              labelText: 'Title',
+              maxLength: 30,
+            ),
+            22.verticalSpace,
+            AppTextFormField(
+              onSaved: (value) {
+                note = value;
+              },
+              validator: (value) {
+                if (value?.isEmpty ?? true) {
+                  return 'Field is required';
+                } else {
+                  return null;
+                }
+              },
+              labelText: 'Type Something....',
+              maxLength: 200,
+              maxLines: 6,
+            ),
+            22.verticalSpace,
+            BlocBuilder<AddNotesCubit, AddNotesState>(
+              builder: (context, state) {
+                return AppElevatedButton(
+                  isLoading: state is AddNotesLoading ? true : false,
+                  onTap: () {
+                    if (formKey.currentState!.validate()) {
+                      formKey.currentState!.save();
 
-                    NoteModel noteModel = NoteModel(
-                      title: title!,
-                      note: note!,
-                      date: DateTime.now().toString(),
-                      color: colorList[randomNum()].value,
-                    );
-                    BlocProvider.of<AddNotesCubit>(context).addNote(noteModel);
-                  } else {
-                    autovalidateMode = AutovalidateMode.always;
-                    setState(() {});
-                  }
-                },
-                text: 'Add',
-                width: widget.width,
-                height: 55,
-              );
-            },
-          ),
-        ],
+                      NoteModel noteModel = NoteModel(
+                        title: title!,
+                        note: note!,
+                        date: DateTime.now().toString(),
+                        color: colorList[randomNum()].value,
+                      );
+                      BlocProvider.of<AddNotesCubit>(context)
+                          .addNote(noteModel);
+                    } else {
+                      autovalidateMode = AutovalidateMode.always;
+                      setState(() {});
+                    }
+                  },
+                  text: 'Add',
+                  width: widget.width,
+                  height: 45,
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
