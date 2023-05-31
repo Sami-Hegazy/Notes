@@ -12,6 +12,7 @@ class AppElevatedButton extends StatelessWidget {
     this.textColor,
     this.backgroundColor,
     this.onTap,
+    this.isLoading = false,
   });
 
   final double width;
@@ -21,6 +22,7 @@ class AppElevatedButton extends StatelessWidget {
   final Color? textColor;
   final Color? backgroundColor;
   final VoidCallback? onTap;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +34,18 @@ class AppElevatedButton extends StatelessWidget {
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(circularBorder ?? 8)),
       ),
-      child: Text(
-        text,
-        style: TextStyle(color: textColor ?? kPrimaryColor),
-      ),
+      child: isLoading
+          ? const SizedBox(
+              height: 24,
+              width: 24,
+              child: CircularProgressIndicator(
+                color: kPrimaryColor,
+              ),
+            )
+          : Text(
+              text,
+              style: TextStyle(color: textColor ?? kPrimaryColor),
+            ),
     );
   }
 }
