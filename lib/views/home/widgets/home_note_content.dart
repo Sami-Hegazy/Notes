@@ -16,7 +16,7 @@ class _HomeNotesContentState extends State<HomeNotesContent> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 4.w),
+      padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 6.w),
       child: Container(
         decoration: BoxDecoration(
           color: widget.cardColor,
