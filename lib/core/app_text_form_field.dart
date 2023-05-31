@@ -10,19 +10,25 @@ class AppTextFormField extends StatelessWidget {
   final Color? labelColor;
   final Color? cursorColor;
   final double? circularRadius;
+  final void Function(String?)? onSaved;
+  final String? Function(String?)? validator;
   const AppTextFormField({
-    super.key,
+    Key? key,
     this.labelText,
     this.maxLength,
+    this.maxLines,
     this.labelColor,
     this.cursorColor,
     this.circularRadius,
-    this.maxLines,
-  });
+    this.onSaved,
+    this.validator,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onSaved: onSaved,
+      validator: validator,
       style: const TextStyle(color: kGreyColor),
       maxLength: maxLength,
       maxLines: maxLines,
@@ -31,6 +37,8 @@ class AppTextFormField extends StatelessWidget {
         labelText: labelText,
         labelStyle: TextStyle(color: labelColor ?? kGreyColor),
         enabledBorder: buildBorder(),
+        errorBorder: buildBorder(borderColor: Colors.red),
+        border: buildBorder(),
         focusedBorder: buildBorder(borderColor: kSecondaryColor),
         counterStyle: const TextStyle(color: kSecondaryColor),
       ),

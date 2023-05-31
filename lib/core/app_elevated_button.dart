@@ -11,6 +11,7 @@ class AppElevatedButton extends StatelessWidget {
     required this.text,
     this.textColor,
     this.backgroundColor,
+    this.onTap,
   });
 
   final double width;
@@ -19,11 +20,12 @@ class AppElevatedButton extends StatelessWidget {
   final String text;
   final Color? textColor;
   final Color? backgroundColor;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: onTap,
       style: ElevatedButton.styleFrom(
         backgroundColor: backgroundColor ?? kSecondaryColor,
         fixedSize: Size(width, height),

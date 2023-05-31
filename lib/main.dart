@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:note_app/core/constants.dart';
-import 'package:note_app/views/add_notes/add_notes.dart';
 import 'package:note_app/views/edit_notes/edit_note.dart';
 import 'package:note_app/views/home/home_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -44,7 +43,6 @@ class NotesApp extends StatelessWidget {
   Map<String, WidgetBuilder> _getRoutes() {
     return {
       '/': (context) => const HomePage(),
-      'addNote': (context) => const AddNotes(),
       'editNote': (context) => const EditNote(),
     };
   }
