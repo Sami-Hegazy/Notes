@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 const kPrimaryColor = Color(0xff252525);
@@ -14,6 +16,15 @@ var colorList = const [
   Color(0xffB69CFF),
   Color(0xff9EFFFF),
 ];
+
+int randomNum() {
+  Random rnd;
+  int min = 0;
+  int max = 5;
+  rnd = Random();
+  int r = min + rnd.nextInt(max - min);
+  return r;
+}
 
 List notesList = [
   {'note': 'This is the first note it\'s not a real note just I\'m testing it'},

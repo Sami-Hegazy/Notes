@@ -1,8 +1,7 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../core/constants.dart';
 import '../../../core/custom_app_bar.dart';
 import 'home_note_content.dart';
 
@@ -45,13 +44,4 @@ class HomeBody extends StatelessWidget {
       ],
     );
   }
-}
-
-int randomNum() {
-  Random rnd;
-  int min = 0;
-  int max = 5;
-  rnd = Random();
-  int r = min + rnd.nextInt(max - min);
-  return r;
 }

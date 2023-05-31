@@ -11,10 +11,11 @@ class AddNoteButtomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     //double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    return Padding(
-      padding: const EdgeInsets.only(right: 16, left: 16, top: 36, bottom: 22),
-      child: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
+    return BlocProvider(
+      create: (context) => AddNotesCubit(),
+      child: Padding(
+        padding:
+            const EdgeInsets.only(right: 16, left: 16, top: 36, bottom: 22),
         child: BlocConsumer<AddNotesCubit, AddNotesState>(
           listener: (context, state) {
             if (state is AddNotesFailure) {}
@@ -25,7 +26,9 @@ class AddNoteButtomSheet extends StatelessWidget {
           builder: (context, state) {
             return ModalProgressHUD(
                 inAsyncCall: state is AddNotesLoading ? true : false,
-                child: AddNoteForm(width: width));
+                child: SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    child: AddNoteForm(width: width)));
           },
         ),
       ),
