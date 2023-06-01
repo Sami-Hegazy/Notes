@@ -18,6 +18,9 @@ class NotesListView extends StatelessWidget {
             itemCount: notes.length,
             itemBuilder: ((context, index) {
               return Dismissible(
+                onDismissed: (direction) {
+                  notes[index].delete();
+                },
                 background: Container(
                   decoration: BoxDecoration(
                     color: Theme.of(context).disabledColor,
