@@ -5,6 +5,7 @@ import 'package:note_app/views/add_notes/widgets/add_alert_dialog.dart';
 import 'package:note_app/views/add_notes/widgets/add_notes_form.dart';
 
 import '../../cubits/add_notes/add_notes_cubit.dart';
+import '../../cubits/notes/notes_cubit.dart';
 
 class AddNoteButtomSheet extends StatelessWidget {
   const AddNoteButtomSheet({super.key});
@@ -22,9 +23,9 @@ class AddNoteButtomSheet extends StatelessWidget {
             //showAlertDialog(context, image: kErrorImage);
           }
           if (state is AddNotesSuccess) {
+            BlocProvider.of<NotesCubit>(context).fetchAllNotes();
             Navigator.pop(context);
-
-            ///showAlertDialog(context, image: kDoneImage);
+            showAlertDialog(context, image: kDoneImage);
           }
         },
         builder: (context, state) {

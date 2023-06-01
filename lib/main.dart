@@ -8,6 +8,7 @@ import 'package:note_app/views/home/notes_view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'core/simple_bloc_observer.dart';
+import 'cubits/notes/notes_cubit.dart';
 
 void main() async {
   await Hive.initFlutter();
@@ -29,19 +30,22 @@ class NotesApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Note App',
-          initialRoute: '/',
-          theme: ThemeData(
-            //brightness: Brightness.dark,
-            primaryColor: const Color(0xff252525),
-            cardColor: const Color(0xffFD99FF),
-            focusColor: const Color(0xffFF9E9E),
-            primaryColorDark: const Color(0xff252525),
-            disabledColor: const Color(0xffFF0000),
+        return BlocProvider(
+          create: (context) => NotesCubit(),
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Note App',
+            initialRoute: '/',
+            theme: ThemeData(
+              //brightness: Brightness.dark,
+              primaryColor: const Color(0xff252525),
+              cardColor: const Color(0xffFD99FF),
+              focusColor: const Color(0xffFF9E9E),
+              primaryColorDark: const Color(0xff252525),
+              disabledColor: const Color(0xffFF0000),
+            ),
+            routes: _getRoutes(),
           ),
-          routes: _getRoutes(),
         );
       },
     );

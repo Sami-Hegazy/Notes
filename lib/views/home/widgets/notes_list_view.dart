@@ -20,6 +20,7 @@ class NotesListView extends StatelessWidget {
               return Dismissible(
                 onDismissed: (direction) {
                   notes[index].delete();
+                  BlocProvider.of<NotesCubit>(context).fetchAllNotes();
                 },
                 background: Container(
                   decoration: BoxDecoration(

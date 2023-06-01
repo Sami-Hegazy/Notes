@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void showAlertDialog(BuildContext context, {required String image}) {
+void showAlertDialog(BuildContext context, {required String image}) async {
   // show the dialog
-  showDialog(
+  await showDialog(
     context: context,
     builder: (BuildContext context) {
       Future.delayed(const Duration(seconds: 3), () {
