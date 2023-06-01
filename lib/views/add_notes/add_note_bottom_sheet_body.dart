@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:note_app/core/constants.dart';
-import 'package:note_app/views/add_notes/widgets/add_alert_dialog.dart';
 import 'package:note_app/views/add_notes/widgets/add_notes_form.dart';
-
+import 'package:quickalert/models/quickalert_type.dart';
+import 'package:quickalert/widgets/quickalert_dialog.dart';
 import '../../cubits/add_notes/add_notes_cubit.dart';
 import '../../cubits/notes/notes_cubit.dart';
 
@@ -20,13 +19,18 @@ class AddNoteButtomSheet extends StatelessWidget {
         listener: (context, state) async {
           if (state is AddNotesFailure) {
             Navigator.pop(context);
-            //showAlertDialog(context, image: kErrorImage);
+            QuickAlert.show(
+              context: context,
+              type: QuickAlertType.error,
+            );
           }
           if (state is AddNotesSuccess) {
             BlocProvider.of<NotesCubit>(context).fetchAllNotes();
             Navigator.pop(context);
-
-            //showAlertDialog(context, image: kDoneImage);
+            QuickAlert.show(
+              context: context,
+              type: QuickAlertType.success,
+            );
           }
         },
         builder: (context, state) {

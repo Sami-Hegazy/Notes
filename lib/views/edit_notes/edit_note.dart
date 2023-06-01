@@ -8,6 +8,8 @@ import 'package:note_app/core/custom_app_bar.dart';
 import 'package:note_app/cubits/notes/notes_cubit.dart';
 import 'package:note_app/models/note_model.dart';
 import 'package:note_app/views/edit_notes/widgets/edit_note_color_list.dart';
+import 'package:quickalert/models/quickalert_type.dart';
+import 'package:quickalert/widgets/quickalert_dialog.dart';
 
 class EditNote extends StatelessWidget {
   const EditNote({super.key});
@@ -40,6 +42,11 @@ class EditNote extends StatelessWidget {
                         note.save();
                         BlocProvider.of<NotesCubit>(context).fetchAllNotes();
                         Navigator.pop(context);
+                        QuickAlert.show(
+                          context: context,
+                          title: 'Edit Successfully',
+                          type: QuickAlertType.success,
+                        );
                       }),
                 ),
                 80.verticalSpace,
