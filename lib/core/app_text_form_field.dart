@@ -13,6 +13,7 @@ class AppTextFormField extends StatelessWidget {
   final void Function(String?)? onSaved;
   final void Function(String?)? onChanged;
   final String? Function(String?)? validator;
+  final String? initialValue;
   const AppTextFormField({
     Key? key,
     this.labelText,
@@ -24,11 +25,13 @@ class AppTextFormField extends StatelessWidget {
     this.onSaved,
     this.validator,
     this.onChanged,
+    this.initialValue,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: initialValue,
       onSaved: onSaved,
       onChanged: onChanged,
       validator: validator,

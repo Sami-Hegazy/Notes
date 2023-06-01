@@ -14,7 +14,13 @@ class EditNoteColorList extends StatefulWidget {
 }
 
 class _EditNoteColorListState extends State<EditNoteColorList> {
-  int currentIndex = 0;
+  late int currentIndex;
+
+  @override
+  void initState() {
+    currentIndex = colorList.indexOf(Color(widget.note.color)); 
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:note_app/cubits/notes/notes_cubit.dart';
 import 'package:note_app/models/note_model.dart';
+import 'package:note_app/views/home/widgets/dismiss_alert_dialog.dart';
 import 'package:note_app/views/home/widgets/note_card_content.dart';
 
 class NotesListView extends StatefulWidget {
@@ -19,14 +20,21 @@ class _NotesListViewState extends State<NotesListView> {
       builder: (context, state) {
         List<NoteModel> notes = BlocProvider.of<NotesCubit>(context).notes!;
         return ListView.builder(
+            reverse: true,
             physics: const BouncingScrollPhysics(),
             itemCount: notes.length,
             itemBuilder: ((context, index) {
               return Dismissible(
                 onDismissed: (direction) {
-                  setState(() {
-                    notes[index].delete();
+                  showDismissAlertDialog(context, deleteButton: () {
+                    setState(() {
+                      notes[index].delete();
+                      BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+                      Navigator.pop(context);
+                    });
+                  }, cancelButton: () {
                     BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+                    Navigator.pop(context);
                   });
                 },
                 background: Container(

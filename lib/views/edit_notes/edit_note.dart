@@ -7,7 +7,6 @@ import 'package:note_app/core/constants.dart';
 import 'package:note_app/core/custom_app_bar.dart';
 import 'package:note_app/cubits/notes/notes_cubit.dart';
 import 'package:note_app/models/note_model.dart';
-import 'package:note_app/views/add_notes/widgets/colors_list_view.dart';
 import 'package:note_app/views/edit_notes/widgets/edit_note_color_list.dart';
 
 class EditNote extends StatelessWidget {
@@ -21,47 +20,53 @@ class EditNote extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: true,
         backgroundColor: kPrimaryColor,
         body: Padding(
           padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 18),
-          child: Column(
-            children: [
-              CustomAppBar(
-                padding: EdgeInsets.zero,
-                title: 'Edit Note',
-                titleSize: 32.sp,
-                appRoundedIcon: AppRoundedIcon(
-                    icon: Icons.check,
-                    onTap: () {
-                      note.title = title ?? note.title;
-                      note.note = noteContent ?? note.note;
-                      note.save();
-                      BlocProvider.of<NotesCubit>(context).fetchAllNotes();
-                      Navigator.pop(context);
-                    }),
-              ),
-              80.verticalSpace,
-              AppTextFormField(
-                onChanged: (val) {
-                  title = val;
-                },
-                labelText: 'Edit Title',
-                maxLength: 30,
-              ),
-              22.verticalSpace,
-              AppTextFormField(
-                onChanged: (val) {
-                  noteContent = val;
-                },
-                labelText: 'Edit Note',
-                maxLength: 200,
-                maxLines: 5,
-              ),
-              26.verticalSpace,
-              EditNoteColorList(
-                note: note,
-              ),
-            ],
+          child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Column(
+              children: [
+                CustomAppBar(
+                  padding: EdgeInsets.zero,
+                  title: 'Edit Note',
+                  titleSize: 32.sp,
+                  appRoundedIcon: AppRoundedIcon(
+                      icon: Icons.check,
+                      onTap: () {
+                        note.title = title ?? note.title;
+                        note.note = noteContent ?? note.note;
+                        note.save();
+                        BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+                        Navigator.pop(context);
+                      }),
+                ),
+                80.verticalSpace,
+                AppTextFormField(
+                  initialValue: note.title,
+                  onChanged: (val) {
+                    title = val;
+                  },
+                  labelText: 'Edit Title',
+                  maxLength: 30,
+                ),
+                22.verticalSpace,
+                AppTextFormField(
+                  initialValue: note.note,
+                  onChanged: (val) {
+                    noteContent = val;
+                  },
+                  labelText: 'Edit Note',
+                  maxLength: 200,
+                  maxLines: 5,
+                ),
+                26.verticalSpace,
+                EditNoteColorList(
+                  note: note,
+                ),
+              ],
+            ),
           ),
         ),
       ),

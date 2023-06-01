@@ -13,6 +13,7 @@ class AppElevatedButton extends StatelessWidget {
     this.backgroundColor,
     this.onTap,
     this.isLoading = false,
+    this.disabledBackgroundColor,
   });
 
   final double width;
@@ -23,6 +24,7 @@ class AppElevatedButton extends StatelessWidget {
   final Color? backgroundColor;
   final VoidCallback? onTap;
   final bool isLoading;
+  final Color? disabledBackgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +32,7 @@ class AppElevatedButton extends StatelessWidget {
       onPressed: onTap,
       style: ElevatedButton.styleFrom(
         backgroundColor: backgroundColor ?? kSecondaryColor,
+        disabledBackgroundColor: disabledBackgroundColor,
         fixedSize: Size(width, height),
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(circularBorder ?? 8)),
