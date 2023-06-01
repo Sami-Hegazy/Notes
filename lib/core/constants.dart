@@ -19,6 +19,14 @@ var colorList = const [
   Color(0xffFFF599),
   Color(0xffB69CFF),
   Color(0xff9EFFFF),
+  Color(0xffFCE4EC),
+  Color(0xFFDEFFF2),
+  Color(0xFFD68FD6),
+  Color(0xFF0FF4C6),
+  Color(0xFFFCCA73),
+  Color(0xFF52FFEE),
+  Color(0xFF3F6634),
+  Color(0xFFAF843E),
 ];
 
 int randomNum() {
