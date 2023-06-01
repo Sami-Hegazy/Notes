@@ -1,25 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:note_app/models/note_model.dart';
 
-class NotecardsContent extends StatefulWidget {
-  final dynamic notes;
-  final Color cardColor;
+class NotecardsContent extends StatelessWidget {
+  final NoteModel note;
 
-  const NotecardsContent(
-      {super.key, required this.notes, required this.cardColor});
+  const NotecardsContent({super.key, required this.note});
 
-  @override
-  State<NotecardsContent> createState() => _NotecardsContentState();
-}
-
-class _NotecardsContentState extends State<NotecardsContent> {
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 6.w),
       child: Container(
         decoration: BoxDecoration(
-          color: widget.cardColor,
+          color: Color(note.color),
           borderRadius: BorderRadius.circular(16.w),
         ),
         padding: EdgeInsets.symmetric(vertical: 18.w),
@@ -29,7 +23,7 @@ class _NotecardsContentState extends State<NotecardsContent> {
           children: [
             ListTile(
               title: Text(
-                'Flutter Notes',
+                note.title,
                 style: TextStyle(
                     fontSize: 24.sp,
                     fontWeight: FontWeight.bold,
@@ -39,7 +33,7 @@ class _NotecardsContentState extends State<NotecardsContent> {
               subtitle: Padding(
                 padding: EdgeInsets.only(top: 20.w),
                 child: Text(
-                  widget.notes['note'],
+                  note.note,
                   style: TextStyle(
                     fontFamily: 'Nunito',
                     fontSize: 14.sp,
@@ -56,7 +50,7 @@ class _NotecardsContentState extends State<NotecardsContent> {
             Padding(
               padding: EdgeInsets.only(right: 20.w, bottom: 8.w, top: 18),
               child: Text(
-                'May 30,2023',
+                note.date,
                 style: TextStyle(
                   fontSize: 12.sp,
                   color: Colors.black,

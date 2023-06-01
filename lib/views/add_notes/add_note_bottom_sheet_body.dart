@@ -19,11 +19,12 @@ class AddNoteButtomSheet extends StatelessWidget {
         listener: (context, state) {
           if (state is AddNotesFailure) {
             Navigator.pop(context);
-            showAlertDialog(context, image: kErrorImage);
+            //showAlertDialog(context, image: kErrorImage);
           }
           if (state is AddNotesSuccess) {
             Navigator.pop(context);
-            showAlertDialog(context, image: kDoneImage);
+
+            ///showAlertDialog(context, image: kDoneImage);
           }
         },
         builder: (context, state) {

@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 const kPrimaryColor = Color(0xff252525);
 const kSecondaryColor = Color(0xFF55EAD9);
@@ -29,20 +30,9 @@ int randomNum() {
   return r;
 }
 
-List notesList = [
-  {'note': 'This is the first note it\'s not a real note just I\'m testing it'},
-  {
-    'note': 'This is the Second note it\'s not a real note just I\'m testing it'
-  },
-  {'note': 'This is the Third note it\'s not a real note just I\'m testing it'},
-  {
-    'note': 'This is the Fourth note it\'s not a real note just I\'m testing it'
-  },
-  {'note': 'This is the Fifth note it\'s not a real note just I\'m testing it'},
-  {'note': 'This is the Fifth note it\'s not a real note just I\'m testing it'},
-  {'note': 'This is the Fifth note it\'s not a real note just I\'m testing it'},
-  {'note': 'This is the Fifth note it\'s not a real note just I\'m testing it'},
-  {'note': 'This is the Fifth note it\'s not a real note just I\'m testing it'},
-  {'note': 'This is the Fifth note it\'s not a real note just I\'m testing it'},
-  {'note': 'This is the Fifth note it\'s not a real note just I\'m testing it'},
-];
+String formatDate() {
+  DateTime now = DateTime.now();
+  String formatter = DateFormat('MMM dd , yyyy').format(now);
+
+  return formatter;
+}
