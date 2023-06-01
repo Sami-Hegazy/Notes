@@ -4,7 +4,7 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:note_app/core/constants.dart';
 import 'package:note_app/models/note_model.dart';
 import 'package:note_app/views/edit_notes/edit_note.dart';
-import 'package:note_app/views/home/home_page.dart';
+import 'package:note_app/views/home/notes_view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'core/simple_bloc_observer.dart';
@@ -49,7 +49,7 @@ class NotesApp extends StatelessWidget {
 
   Map<String, WidgetBuilder> _getRoutes() {
     return {
-      '/': (context) => const HomePage(),
+      '/': (context) => const NotesView(),
       'editNote': (context) => const EditNote(),
     };
   }

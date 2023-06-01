@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class HomeNotesContent extends StatefulWidget {
+class NotecardsContent extends StatefulWidget {
   final dynamic notes;
   final Color cardColor;
 
-  const HomeNotesContent(
+  const NotecardsContent(
       {super.key, required this.notes, required this.cardColor});
 
   @override
-  State<HomeNotesContent> createState() => _HomeNotesContentState();
+  State<NotecardsContent> createState() => _NotecardsContentState();
 }
 
-class _HomeNotesContentState extends State<HomeNotesContent> {
+class _NotecardsContentState extends State<NotecardsContent> {
   @override
   Widget build(BuildContext context) {
     return Padding(

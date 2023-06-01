@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/views/add_notes/add_note_bottom_sheet_body.dart';
 import '../../core/constants.dart';
-import 'widgets/home_body.dart';
+import 'widgets/notes_body.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class NotesView extends StatefulWidget {
+  const NotesView({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<NotesView> createState() => _NotesViewState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _NotesViewState extends State<NotesView> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
           ),
           child: const Icon(Icons.add),
         ),
-        body: HomeBody(notes: notesList, color: colorList),
+        body: NotesBody(notes: notesList, color: colorList),
       ),
     );
   }
