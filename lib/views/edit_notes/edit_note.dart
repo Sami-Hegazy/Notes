@@ -7,6 +7,8 @@ import 'package:note_app/core/constants.dart';
 import 'package:note_app/core/custom_app_bar.dart';
 import 'package:note_app/cubits/notes/notes_cubit.dart';
 import 'package:note_app/models/note_model.dart';
+import 'package:note_app/views/add_notes/widgets/colors_list_view.dart';
+import 'package:note_app/views/edit_notes/widgets/edit_note_color_list.dart';
 
 class EditNote extends StatelessWidget {
   const EditNote({super.key});
@@ -54,7 +56,11 @@ class EditNote extends StatelessWidget {
                 labelText: 'Edit Note',
                 maxLength: 200,
                 maxLines: 5,
-              )
+              ),
+              26.verticalSpace,
+              EditNoteColorList(
+                note: note,
+              ),
             ],
           ),
         ),
