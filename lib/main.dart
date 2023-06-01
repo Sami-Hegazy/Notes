@@ -54,7 +54,7 @@ class NotesApp extends StatelessWidget {
   Map<String, WidgetBuilder> _getRoutes() {
     return {
       '/': (context) => const NotesView(),
-      'editNote': (context) => const EditNote(),
+      'editNote': (context) => EditNote(),
     };
   }
 }

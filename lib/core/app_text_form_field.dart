@@ -11,6 +11,7 @@ class AppTextFormField extends StatelessWidget {
   final Color? cursorColor;
   final double? circularRadius;
   final void Function(String?)? onSaved;
+  final void Function(String?)? onChanged;
   final String? Function(String?)? validator;
   const AppTextFormField({
     Key? key,
@@ -22,12 +23,14 @@ class AppTextFormField extends StatelessWidget {
     this.circularRadius,
     this.onSaved,
     this.validator,
+    this.onChanged,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       onSaved: onSaved,
+      onChanged: onChanged,
       validator: validator,
       style: const TextStyle(color: kGreyColor),
       maxLength: maxLength,

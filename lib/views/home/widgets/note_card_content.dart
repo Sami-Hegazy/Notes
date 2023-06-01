@@ -43,7 +43,8 @@ class NotecardsContent extends StatelessWidget {
               ),
               trailing: GestureDetector(
                   onTap: () {
-                    Navigator.of(context).pushNamed('editNote');
+                    Navigator.of(context)
+                        .pushNamed('editNote', arguments: note);
                   },
                   child: const Icon(Icons.edit)),
             ),

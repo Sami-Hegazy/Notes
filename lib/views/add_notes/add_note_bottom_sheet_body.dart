@@ -17,7 +17,7 @@ class AddNoteButtomSheet extends StatelessWidget {
     return BlocProvider(
       create: (context) => AddNotesCubit(),
       child: BlocConsumer<AddNotesCubit, AddNotesState>(
-        listener: (context, state) {
+        listener: (context, state) async {
           if (state is AddNotesFailure) {
             Navigator.pop(context);
             //showAlertDialog(context, image: kErrorImage);
@@ -25,7 +25,8 @@ class AddNoteButtomSheet extends StatelessWidget {
           if (state is AddNotesSuccess) {
             BlocProvider.of<NotesCubit>(context).fetchAllNotes();
             Navigator.pop(context);
-            showAlertDialog(context, image: kDoneImage);
+
+            //showAlertDialog(context, image: kDoneImage);
           }
         },
         builder: (context, state) {
