@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:note_app/cubits/notes/add_notes_cubit.dart';
 import 'package:note_app/models/note_model.dart';
 
 import '../../../core/app_elevated_button.dart';
 import '../../../core/app_text_form_field.dart';
 import '../../../core/constants.dart';
+import '../../../cubits/add_notes/add_notes_cubit.dart';
 
 class AddNoteForm extends StatefulWidget {
   const AddNoteForm({
