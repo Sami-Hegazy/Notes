@@ -7,6 +7,7 @@ import '../../../core/app_elevated_button.dart';
 import '../../../core/app_text_form_field.dart';
 import '../../../core/constants.dart';
 import '../../../cubits/add_notes/add_notes_cubit.dart';
+import 'colors_list_view.dart';
 
 class AddNoteForm extends StatefulWidget {
   const AddNoteForm({
@@ -73,6 +74,16 @@ class _AddNoteFormState extends State<AddNoteForm> {
               maxLength: 200,
               maxLines: 6,
             ),
+            22.verticalSpace,
+            Text(
+              'Pick a Note Color',
+              style: TextStyle(
+                  color: kSecondaryColor,
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.bold),
+            ),
+            22.verticalSpace,
+            const ColorListView(),
             22.verticalSpace,
             BlocBuilder<AddNotesCubit, AddNotesState>(
               builder: (context, state) {
